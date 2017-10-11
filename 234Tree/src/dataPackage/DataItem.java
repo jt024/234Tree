@@ -13,24 +13,38 @@ public class DataItem {
     public String dData;
     private int count;
 
-    public DataItem() {} 
-    public DataItem(String val) {
-        this.dData = val;
+     
+    public DataItem(String term) {
+        dData = term;
         this.count = 1;
     }
+    public DataItem() {}
     public String getItem() {
         return this.dData;
     }
+
+
+
     public int getCount() {
         return this.count;
     }
+    public boolean isLess(String compare){
+        return compare.compareTo(dData) < 0;
+    }
+    public boolean isGreater(String compare){
+        return compare.compareTo(dData) > 0;
+    }    
     
                                 ///////////////////////////////////    
                                 // Make valid String for DataItem//
                                 ///////////////////////////////////    
     public String displayData(){
-        return "";
+
+        return "Word: " + dData+"\tCount: "+ count;
     }
+    
+    
+    
     
     
 }

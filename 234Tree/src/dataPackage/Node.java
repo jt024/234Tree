@@ -15,6 +15,8 @@ public class Node {
     
     private int numItems=0;
     private Node parent;
+    private boolean leaf;
+    private boolean full;
     private Node[] children = new Node[SIZE];
     private DataItem[] items = new DataItem[SIZE-1];
 
@@ -57,40 +59,40 @@ public class Node {
         return items[index];
     }
     public Boolean isFull(){
-        return numItems == SIZE-1;
+        return (numItems==SIZE-1); 
     }
     public int findItem(String term){
         for (int j = 0; j < SIZE; j++) {
             if (items[j]==null) 
                 break;
-            else if (items[j].getItem()== term)
+            else if (items[j].getItem().equalsIgnoreCase(term))
                 return j;
         }
         return -1;
     }
     public int insertItem(DataItem newItem){
         numItems++;
-        String newKey = newItem.dData;
+	String newKey = newItem.dData;
         
         for (int j = SIZE-2; j>=0 ;j--) {
-            
+
             if (items[j]==null)
                 continue;
             else {
                 String itsKey = items[j].dData;
-                if (newKey.compareTo(itsKey)==1) {
-//                    items[j+1]
+                if (newKey.compareToIgnoreCase(itsKey) > 0) {
+                    items[j+1] = items[j];
                 }
-            
-            
-            }
-                
-            
-        }
-        
-        return -1;
+				else{
+					items[j+1] = newItem;
+					return j+1;
+				}
+            }	// end else (not null)
+        }		// end for  ---->   //	shifted all items,
+		items[0] = newItem;		//	insert new item
+        return 0;
     
-    }
+    }   // end insertItem()
     
     public DataItem removeItem(){
         DataItem temp = items[numItems-1];
@@ -100,6 +102,7 @@ public class Node {
     }
     
     public void displayItem(){
+                System.out.println("got here");
         for (int i = 0; i < numItems; i++) {
             items[i].displayData();
         }
