@@ -10,41 +10,33 @@ package dataPackage;
  * @author jt024
  */
 public class DataItem {
-    public String dData;
-    private int count;
 
-     
+    public String dData;
+    public int count;
+
     public DataItem(String term) {
         dData = term;
         count = 1;
     }
-    public DataItem() {}
     public String getItem() {
         return this.dData;
     }
-
-
-
     public int getCount() {
         return this.count;
     }
-    public boolean isLess(String compare){
-        return compare.compareTo(dData) < 0;
+    public void displayItem() {
+        if (dData.length()<3) 
+            System.out.print("\nWord: " + dData + "\t\t\t\tCount: " + count);
+        else if (dData.length() < 10)
+            System.out.print("\nWord: " + dData + "\t\t\tCount: " + count);
+        else
+            System.out.print("\nWord: " + dData + "\t\tCount: " + count);
+        System.out.println();
     }
-    public boolean isGreater(String compare){
-        return compare.compareTo(dData) > 0;
-    }    
-    
-                                ///////////////////////////////////    
-                                // Make valid String for DataItem//
-                                ///////////////////////////////////    
-    public String displayData(){
 
-        return "Word: " + dData+"\tCount: "+ count;
-    }
-    
-    
-    
-    
-    
+    ///////////////////////////////////    
+    // Make valid String for DataItem//
+    ///////////////////////////////////    
+
+
 }
