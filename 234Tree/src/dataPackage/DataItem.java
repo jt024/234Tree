@@ -7,7 +7,7 @@ package dataPackage;
 
 /**
  *
- * @author hk009
+ * @author jt024
  */
 public class DataItem {
     public String dData;
@@ -16,7 +16,7 @@ public class DataItem {
      
     public DataItem(String term) {
         dData = term;
-        this.count = 1;
+        count = 1;
     }
     public DataItem() {}
     public String getItem() {
